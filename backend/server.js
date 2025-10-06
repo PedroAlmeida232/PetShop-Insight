@@ -70,6 +70,20 @@ app.put('/produtos/:id', (req,res)=>{
 )
 }) 
 
+// Deletar produto
+app.delete('/produtos/:id', (req, res)=>{
+    const { id } = req.params
+    const produtoIndex = produtos.findIndex(p => p.id === id)
+
+     if (produtoIndex === -1) {
+        return res.status(404).json({ mensagem: 'Produto não encontrado' });
+    }
+    // splice serve para excluir um produto de um array e os parametros (produtoindex = serve para localizar o indice do produto |1 = serve para especificar quantos elementos vao ser removidos
+    produtos.splice(produtoIndex, 1);
+    res.status(204).send('Produto deletado com sucesso');
+
+})
+     
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
