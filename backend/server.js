@@ -34,6 +34,18 @@ app.get('/produtos', (req,res)=>{
     res.status(200).json(novoProduto)
 })
 
+// Busca o produto atraves do ID 
+
+app.get('/produtos/:id')
+
+    const { id }  = req.params // Define o id como paramentro da requisicao, ou seja, ele vai substituir no ":id" da rota pelo id do produto 
+    const produto = produtos.find(p => p.id === id);// Usa o metodo find() para procurar o produto correspondente ao ID passado na requisicao.
+
+        if (!produto) {
+            return res.status(404).json({ mensagem: 'Produto não encontrado' });
+        }
+        res.status(200).json(produto);
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`)
 })
