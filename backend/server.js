@@ -39,16 +39,42 @@ app.get('/produtos', (req,res)=>{
 app.get('/produtos/:id')
 
     const { id }  = req.params // Define o id como paramentro da requisicao, ou seja, ele vai substituir no ":id" da rota pelo id do produto 
-    const produto = produtos.find(p => p.id === id);// Usa o metodo find() para procurar o produto correspondente ao ID passado na requisicao.
+    const produto = produtos.find(p => p.id === id)// Usa o metodo find() para procurar o produto correspondente ao ID passado na requisicao.
 
         if (!produto) {
-            return res.status(404).json({ mensagem: 'Produto não encontrado' });
+            return res.status(404).json({ mensagem: 'Produto nao encontrado' });
         }
-        res.status(200).json(produto);
+        res.status(200).json(produto)
+
+// Editar produto 
+// Porque usamos o put em vez do path , o put ao longo prazo vale mais a pena pois nao a chance de ter chaves e valores duplicados
+app.put('/produtos/:id', (req,res)=>{
+    const { id }  = req.params
+    const {nome, descricao, preco, categoria} = req.body  // O usuario vai ter que editar preencher todos os campos de novo 
+    // Busca a posicao (indice) do produto no array, comparando os IDs
+    const produtoIndex = produtos.findIndex(p => p.id === id)
+        // -1 e usando quando a funcao findindex nao retorna nada 
+     if (produtoIndex === -1) {
+        return res.status(404).json({ mensagem: 'Produto nao encontrado' })
+    }
+    // Cria um novo objeto combinando o objeto original com o novo
+    produtos[produtoIndex] = Object.assign(
+        {}, 
+    produtos[produtoIndex], 
+    { 
+        nome: nome || produtos[produtoIndex].nome,
+        descricao: descricao || produtos[produtoIndex].descricao,
+        preco: preco || produtos[produtoIndex].preco,
+        categoria: categoria || produtos[produtoIndex].categoria
+    }
+)
+}) 
+
 
 app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`)
+    console.log(`Servidor rodando em http://localhost:${PORT}`)
 })
+
 
 
 
