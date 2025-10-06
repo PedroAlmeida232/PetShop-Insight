@@ -36,7 +36,7 @@ app.get('/produtos', (req,res)=>{
 
 // Busca o produto atraves do ID 
 
-app.get('/produtos/:id')
+app.get('/produtos/:id', (req,res)=>{
 
     const { id }  = req.params // Define o id como paramentro da requisicao, ou seja, ele vai substituir no ":id" da rota pelo id do produto 
     const produto = produtos.find(p => p.id === id)// Usa o metodo find() para procurar o produto correspondente ao ID passado na requisicao.
@@ -45,6 +45,7 @@ app.get('/produtos/:id')
             return res.status(404).json({ mensagem: 'Produto nao encontrado' });
         }
         res.status(200).json(produto)
+    })
 
 // Editar produto 
 // Porque usamos o put em vez do path , o put ao longo prazo vale mais a pena pois nao a chance de ter chaves e valores duplicados
@@ -85,7 +86,7 @@ app.delete('/produtos/:id', (req, res)=>{
 })
      
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
 })
 
