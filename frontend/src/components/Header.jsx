@@ -10,7 +10,7 @@ const Header = () => {
         <div id="navbar" className='font-medium'>
             <ul className="flex justify-center list-none p-5 m-0 space-x-4 gap-15 text-base">
                 <li>
-                    <a href="/home" className='uppercase text-cyan-100'>Home</a>
+                    <a href="/" className='uppercase text-cyan-100'>Home</a>
                 </li>
                 <li>
                     <a href="/produtos" className='uppercase text-cyan-100'>Produtos</a>
