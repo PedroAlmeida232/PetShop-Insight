@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-    <div className="bg-gradient-to-br from-cyan-600 to-cyan-400">
+    <div className="bg-linear-to-br from-cyan-600 from-40% to-cyan-300">
       <Header/>
       <Main />
       <Footer />

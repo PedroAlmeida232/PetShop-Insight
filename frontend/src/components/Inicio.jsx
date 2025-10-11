@@ -15,14 +15,14 @@ const Main = () =>{
                         para deixar seu melhor amigo sempre feliz e saudável.
                     </p>
                     <div className='flex gap-30 justify-start px-25'>
-                        <button className='cursor-pointer bg-blue-600 py-3 px-10 rounded-xl  text-white font-bold uppercase'>Conheça Mais</button>
-                        <button className='cursor-pointer bg-cyan-500 py-3 px-10 rounded-xl border-1 border-cyan-700 text-white font-bold uppercase'>Testando</button>
+                        <button className='cursor-pointer bg-blue-600 py-3 px-10 rounded-xl shadow-lg shadow-blue-900 text-white font-bold uppercase'>Conheça Mais</button>
+                        <button className='cursor-pointer bg-cyan-700 py-3 px-10 rounded-xl shadow-lg shadow-cyan-700 text-white font-bold uppercase'>Testando</button>
                     </div>
                 </div>
                 <img src={img2} className='w-150' />
             </div> 
             <div className='flex p-20 items-center justify-center flex-col'> 
-                <h1 className='font-bold uppercase text-3xl text-cyan-600 text-shadow-md'>produtos</h1>
+                <h1 className='font-bold uppercase text-3xl text-slate-600 text-shadow-md'>produtos em destaque</h1>
                 <div className='p-20 grid gap-10 md:grid-cols-2 lg:grid-cols-4'>
                     
                 </div>
