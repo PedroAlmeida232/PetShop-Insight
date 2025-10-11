@@ -10,6 +10,10 @@ app.use(express.json())
 // Armazena produtos (simulando banco de dados)
 let produtos = []
 
+app.get('/', (req, res)=>{
+    res.status(200).json({message: "Codigo funcionando"})
+})
+
 // Criar produto 
 app.post('/produtos', (req,res)=>{
     const {nome, descricao, preco, categoria} = req.body  // Colocando informacoes necessarias dentro do corpo de requisicao para serem consumidas
@@ -47,29 +51,27 @@ app.get('/produtos/:id', (req,res)=>{
         res.status(200).json(produto)
     })
 
-// Editar produto 
-// Porque usamos o put em vez do path , o put ao longo prazo vale mais a pena pois nao a chance de ter chaves e valores duplicados
-app.put('/produtos/:id', (req,res)=>{
-    const { id }  = req.params
-    const {nome, descricao, preco, categoria} = req.body  // O usuario vai ter que editar preencher todos os campos de novo 
-    // Busca a posicao (indice) do produto no array, comparando os IDs
+// Editar produto
+app.put('/produtos/:id', (req, res) => {
+    const { id } = req.params
+    const { nome, descricao, preco, categoria } = req.body
     const produtoIndex = produtos.findIndex(p => p.id === id)
-        // -1 e usando quando a funcao findindex nao retorna nada 
-     if (produtoIndex === -1) {
-        return res.status(404).json({ mensagem: 'Produto nao encontrado' })
+    
+    if (produtoIndex === -1) {
+        return res.status(404).json({ mensagem: 'Produto não encontrado' })
     }
-    // Cria um novo objeto combinando o objeto original com o novo
-    produtos[produtoIndex] = Object.assign(
-        {}, 
-    produtos[produtoIndex], 
-    { 
-        nome: nome || produtos[produtoIndex].nome,
-        descricao: descricao || produtos[produtoIndex].descricao,
-        preco: preco || produtos[produtoIndex].preco,
-        categoria: categoria || produtos[produtoIndex].categoria
+
+    // Atualiza o produto mantendo o ID original
+    produtos[produtoIndex] = {
+        ...produtos[produtoIndex], // Mantém os dados existentes
+        nome: nome !== undefined ? nome : produtos[produtoIndex].nome,
+        descricao: descricao !== undefined ? descricao : produtos[produtoIndex].descricao,
+        preco: preco !== undefined ? preco : produtos[produtoIndex].preco,
+        categoria: categoria !== undefined ? categoria : produtos[produtoIndex].categoria
     }
-)
-}) 
+
+    res.status(200).json(produtos[produtoIndex]) // ← ADICIONE ESTA LINHA
+})
 
 // Deletar produto
 app.delete('/produtos/:id', (req, res)=>{
