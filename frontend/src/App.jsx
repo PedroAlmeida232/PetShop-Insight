@@ -1,17 +1,16 @@
-import Header from "./components/Header"
-import Main from "./components/Inicio"
-import Footer from "./components/Footer"
-
+import Home from './pages/Home.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
 
   return (
-    <>
-    <div className="bg-linear-to-br from-cyan-600 from-40% to-cyan-300">
-      <Header/>
-      <Main />
-      <Footer />
-    </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/sobre" element={<Sobre />} />
+        <Route path='/produtos' element={<Produtos />} /> */}
+      </Routes>
+    </BrowserRouter>
+ 
   )
 }
 
