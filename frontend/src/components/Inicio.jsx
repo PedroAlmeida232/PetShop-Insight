@@ -7,6 +7,7 @@ import Estast from "../img/estatistica.png"
 import Mao from "../img/mao.png"
 import { FaTrophy } from 'react-icons/fa';
 
+
 const Main = () =>{
     return(
         <div className='flex flex-col'>

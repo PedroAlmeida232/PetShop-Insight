@@ -10,16 +10,16 @@ const Header = () => {
         <div id="navbar" className='font-medium'>
             <ul className="flex justify-center list-none p-5 m-0 space-x-4 gap-15 text-base">
                 <li>
-                    <a href="/" className='uppercase text-cyan-100'>Home</a>
+                    <a href="/" className='uppercase text-cyan-100 hover:border-b-2 transition hover:text-blue-600'>Home</a>
                 </li>
                 <li>
-                    <a href="/produtos" className='uppercase text-cyan-100'>Produtos</a>
+                    <a href="/produtos" className='uppercase text-cyan-100 hover:border-b-2 transition hover:text-blue-600'>Produtos</a>
                 </li>
                 <li>
-                    <a href="/sobre" className='uppercase text-cyan-100'>Sobre</a>
+                    <a href="/sobre" className='uppercase text-cyan-100 hover:border-b-2 transition hover:text-blue-600'>Sobre</a>
                 </li>
                 <li>
-                    <a href="/contatos" className='uppercase text-cyan-100'>Contato</a>
+                    <a href="/contatos" className='uppercase text-cyan-100 hover:border-b-2 transition hover:text-blue-600'>Contato</a>
                 </li>
             </ul>
         </div>
