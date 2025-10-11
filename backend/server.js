@@ -35,7 +35,7 @@ app.post('/produtos', (req,res)=>{
 // Buscar todos produtos
 
 app.get('/produtos', (req,res)=>{
-    res.status(200).json(novoProduto)
+    res.status(200).json(produtos)
 })
 
 // Busca o produto atraves do ID 
