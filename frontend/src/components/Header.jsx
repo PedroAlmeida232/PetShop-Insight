@@ -3,7 +3,7 @@ import pata from "../img/pata.png"
 
 const Header = () => {
   return (
-    <div className='bg-none flex justify-between items-center p-5 px-10 '>
+    <div className='bg-none flex justify-between items-center p-2 px-10 '>
         <div id="logo" className='text-center p-5 text-2xl font-semibold'> 
             <h2 className='uppercase text-cyan-200 flex items-center gap-4'><img src={pata} alt="" className='w-5 h-5'/>Insight PetClub</h2>
         </div>
