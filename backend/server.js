@@ -1,6 +1,8 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid');
 const cors = require('cors')
+const fs = require('fs')
+const path = require('path')
 
 const app = express()
 
@@ -12,6 +14,36 @@ app.use(express.json())
 
 // Armazena produtos (simulando banco de dados)
 let produtos = []
+
+// Armazena contatos
+let contatos = []
+
+// Caminho do arquivo JSON para salvar os contatos
+const contatosFilePath = path.join(__dirname, 'contatos.json')
+
+// Função para carregar contatos do arquivo
+const carregarContatos = () => {
+    try {
+        if (fs.existsSync(contatosFilePath)) {
+            const data = fs.readFileSync(contatosFilePath, 'utf8')
+            contatos = JSON.parse(data)
+        }
+    } catch (error) {
+        console.error('Erro ao carregar contatos:', error)
+    }
+}
+
+// Função para salvar contatos no arquivo
+const salvarContatos = () => {
+    try {
+        fs.writeFileSync(contatosFilePath, JSON.stringify(contatos, null, 2), 'utf8')
+    } catch (error) {
+        console.error('Erro ao salvar contatos:', error)
+    }
+}
+
+// Carregar contatos ao iniciar o servidor
+carregarContatos()
 
 app.get('/', (req, res)=>{
     res.status(200).json({message: "Codigo funcionando"})
@@ -88,6 +120,67 @@ app.delete('/produtos/:id', (req, res)=>{
     produtos.splice(produtoIndex, 1);
     res.status(204).send('Produto deletado com sucesso');
 
+})
+
+// ==================== ROTAS DE CONTATO ====================
+
+// Criar contato (Enviar mensagem)
+app.post('/contatos', (req, res) => {
+    const { nome, email, telefone, assunto, mensagem } = req.body
+    
+    if (!nome || !email || !telefone || !assunto || !mensagem) {
+        return res.status(400).json({ mensagem: 'Todos os campos são obrigatórios' })
+    }
+
+    const novoContato = {
+        id: uuidv4(),
+        nome,
+        email,
+        telefone,
+        assunto,
+        mensagem,
+        data: new Date().toISOString()
+    }
+
+    contatos.push(novoContato)
+    salvarContatos()
+    
+    res.status(201).json({
+        mensagem: 'Contato enviado com sucesso!',
+        contato: novoContato
+    })
+})
+
+// Buscar todos os contatos
+app.get('/contatos', (req, res) => {
+    res.status(200).json(contatos)
+})
+
+// Buscar contato por ID
+app.get('/contatos/:id', (req, res) => {
+    const { id } = req.params
+    const contato = contatos.find(c => c.id === id)
+
+    if (!contato) {
+        return res.status(404).json({ mensagem: 'Contato não encontrado' })
+    }
+    
+    res.status(200).json(contato)
+})
+
+// Deletar contato
+app.delete('/contatos/:id', (req, res) => {
+    const { id } = req.params
+    const contatoIndex = contatos.findIndex(c => c.id === id)
+
+    if (contatoIndex === -1) {
+        return res.status(404).json({ mensagem: 'Contato não encontrado' })
+    }
+
+    contatos.splice(contatoIndex, 1)
+    salvarContatos()
+    
+    res.status(200).json({ mensagem: 'Contato deletado com sucesso' })
 })
      
 
