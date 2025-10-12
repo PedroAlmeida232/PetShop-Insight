@@ -17,9 +17,19 @@ const Main = () =>{
                         Produtos de qualidade, serviços especializados e muito mais 
                         para deixar seu melhor amigo sempre feliz e saudável.
                     </p>
-                    <div className='flex gap-30 justify-start px-25'>
-                        <button className='cursor-pointer bg-blue-600 py-3 px-10 rounded-xl shadow-lg shadow-slate-500 text-white font-bold uppercase hover:bg-blue-500 hover:shadow-slate-500 transition ease-in-out'>Conheça Mais</button>
-                        <button className='cursor-pointer bg-blue-400 py-3 px-10 rounded-xl shadow-lg shadow-cyan-700 text-white font-bold uppercase hover:bg-blue-500 hover:shadow-slate-500 transition ease-in-out'>Contato</button>
+                    <div className='flex gap-8 justify-start items-center'>
+                        <a href='/sobre' className='group'>
+                            <button className='relative cursor-pointer bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-10 rounded-2xl shadow-2xl text-white font-bold text-base uppercase hover:from-blue-700 hover:to-blue-800 hover:scale-105 hover:shadow-cyan-500/50 transition-all duration-500 ease-out transform hover:-translate-y-1 border-2 border-blue-400/30 min-w-[180px]'>
+                                <span className='relative z-10'>Conheça Mais</span>
+                                <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/20 group-hover:to-blue-400/20 transition-all duration-500'></div>
+                            </button>
+                        </a>
+                        <a href='/contatos' className='group'>
+                            <button className='relative cursor-pointer bg-gradient-to-r from-cyan-500 to-cyan-600 py-4 px-10 rounded-2xl shadow-2xl text-white font-bold text-base uppercase hover:from-cyan-600 hover:to-cyan-700 hover:scale-105 hover:shadow-blue-500/50 transition-all duration-500 ease-out transform hover:-translate-y-1 border-2 border-cyan-400/30 min-w-[180px]'>
+                                <span className='relative z-10'>Contato</span>
+                                <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 to-blue-400/0 group-hover:from-blue-400/20 group-hover:to-cyan-400/20 transition-all duration-500'></div>
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <img src={img2} className='w-150' />
