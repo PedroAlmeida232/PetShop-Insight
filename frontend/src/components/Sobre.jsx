@@ -4,7 +4,7 @@ import pata from '../img/pata.png'
 
 const Sobre = () => {
   return (
-    <div className='flex flex-col min-h-screen py-10'>
+    <div className='flex flex-col min-h-screen py-25'>
       {/* Seção Principal - Sobre a Empresa */}
       <div className='flex items-center justify-between px-10 py-20 gap-10'>
         <div className='flex-1'>

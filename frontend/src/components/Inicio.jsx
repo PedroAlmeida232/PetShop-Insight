@@ -3,7 +3,7 @@ import img2 from '../img/imgDog.webp'
 import Trofeu from "../img/trofeu.png"
 import Estast from "../img/estatistica.png"
 import Mao from "../img/mao.png"
-import selections from "../img/selections.png"
+import fiap from "../img/fiap.webp"
 
 
 const Main = () =>{
@@ -34,16 +34,17 @@ const Main = () =>{
                 </div>
                 <img src={img2} className='w-150' />
             </div> 
-            <div className='flex p-20 py-10 items-center justify-center flex-col'> 
-                <h1 className='font-bold uppercase text-3xl text-slate-600 text-shadow-md'>marcas parceiras</h1>
+            <div className='flex p-20 py-35 items-center justify-center flex-col bg-black'> 
+                <h1 className='font-bold uppercase text-3xl text-slate-100 text-shadow-md'>marcas parceiras</h1>
                 <div
                     id="produtos"
-                    className="p-10 py-30 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+                    className="py-20 flex flex-col justify-center items-center"
                 >
-                  <img src={selections} alt="" />                    
-                </div>
+                  <img src={fiap} alt="" /> 
+                  <div className='w-300 h-2 bg-pink-800'></div>             
+                </div>   
             </div>
-            <div className='flex flex-col items-center p-2'>
+            <div className='flex flex-col items-center p-2 py-20'>
                 <h1 className='font-bold uppercase text-3xl text-slate-600 text-shadow-md'>Um pouco sobre nós</h1>
                 <div className='grid grid-cols-3 gap-10 justify-center px-10 py-40'>
                     <div className='flex flex-col items-center p-10 gap-10 bg-slate-200 rounded-xl shadow-xl'>
